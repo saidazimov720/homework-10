@@ -28,4 +28,5 @@ function generateGradient(colors) {
         var color = interpolateColor(startColor, endColor, weight);
         gradient.push(color);
     }
+    return gradient;
 }
