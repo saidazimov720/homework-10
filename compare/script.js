@@ -10,13 +10,13 @@ function numberGenerator(params) {
             phoneNumbers.push(phoneNum);
         }
     }
-    return phoneNumbers; 
+    return phoneNumbers;
 }
 
 function generateNum(count, max) {
     var numbers = [];
     while (numbers.length < count) {
-        var number = Math.floor(Math.random()*max);
+        var number = Math.floor(Math.random() * max);
         if (numbers.indexOf(number) === -1) {
             numbers.push(number);
         }
@@ -27,12 +27,25 @@ function generateNum(count, max) {
 var generatedNumber = numberGenerator(500);
 console.log("Generated phone numbers: ", generatedNumber);
 
-function checkNum(userNum) {
-    if (generatedNumber.indexOf(userNum) !== -1) {
+function checkPhoneNum(userPhoneNum) {
+    if (generatedNumber.indexOf(userPhoneNum) !== -1) {
         console.log("Phone number mathed: Go to next step");
         return true;
-    } else{
+    } else {
         console.log("Phone number not match");
         return false;
+    }
+}
+
+function checkNum(userNum) {
+    var generatedNumbers = generateNum(30, 300);
+    console.log("Generated numbers:", generatedNumbers);
+    var match = false;
+    for (let i = 0; i < userNum.length; i++) {
+        if (generatedNumbers.indexOf(userNum[i]) !== -1) {
+            match = true;
+            break;
+        }
+
     }
 }
