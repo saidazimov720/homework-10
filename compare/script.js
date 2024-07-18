@@ -23,3 +23,6 @@ function generateNum(count, max) {
     }
     return number;
 }
+
+var generatedNumber = numberGenerator(500);
+console.log("Generated phone numbers: ", generatedNumber);
