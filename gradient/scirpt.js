@@ -30,3 +30,7 @@ function generateGradient(colors) {
     }
     return gradient;
 }
+
+function interpolateColor(color1, color2, color3) {
+    
+}
