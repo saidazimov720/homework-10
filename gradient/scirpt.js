@@ -31,7 +31,7 @@ function gradient(count) {
         return "hsl(" + Math.round(h * 60) + ", " + Math.round(s * 100) + "%, " + Math.round(l * 100) + "%)";
 
     }
-}
+
 
 var interpolateColor = function (c1, c2, weight) {
     var r1 = hsltoRgb(c1)[0];
@@ -56,3 +56,17 @@ for (var i = 0; i < steps; i++) {
 }
 
 var container = document.createElement('div');
+container.style.display = 'flex';
+container.style.width = '100%';
+container.style.height = '100px';
+
+gradient.forEach(function(color) {
+    var block = document.createElement('div');
+    block.style.height = '100%';
+    block.style.flex = '1';
+    block.style.backgroundColor = color;
+    container.appendChild(block);
+});
+
+document.body.appendChild(container);
+}
