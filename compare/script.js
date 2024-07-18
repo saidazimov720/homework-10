@@ -26,3 +26,10 @@ function generateNum(count, max) {
 
 var generatedNumber = numberGenerator(500);
 console.log("Generated phone numbers: ", generatedNumber);
+
+function checkNum(userNum) {
+    if (generatedNumber.indexOf(userNum) !== -1) {
+        console.log("Phone number mathed: Go to next step");
+        return true;
+    }
+}
