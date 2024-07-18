@@ -31,6 +31,13 @@ function generateGradient(colors) {
     return gradient;
 }
 
-function interpolateColor(color1, color2, color3) {
-    
+function interpolateColor(color1, color2, weight) {
+    var color1RGB = hsltoGRB(color1);
+    var color2RGB = hsltoGRB(color2);
+
+    var r = Math.round(color1RGB.r + weight * (color2RGB.r - color1RGB.r));
+    var g = Math.round(color1RGB.g + weight * (color2RGB.g - color1RGB.g));
+    var b = Math.round(color1RGB.b + weight * (color2RGB.b - color1RGB.b));
+
+    return rgbToHsl(r, g, b);
 }
