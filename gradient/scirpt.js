@@ -69,4 +69,6 @@ gradient.forEach(function(color) {
 });
 
 document.body.appendChild(container);
-}
+};
+
+gradient(5);
