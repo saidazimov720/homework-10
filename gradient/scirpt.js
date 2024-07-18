@@ -3,16 +3,15 @@ function gradient(count) {
         alert("The numbers of colors should be between 2 and 5");
     }
 
+    var steps = 100;
     var colors = [];
-    var steps = 360 / count;
+    var huesteps = 360 / count;
 
-    for (let i = 0; i < count; i++) {
-        var hue = i * huesStep;
-        var color = `hsl(${hue}, 100%, 50%)`; 
-        colors.push(color);
-        
+    var hsltoRgb = function(hsl){
+        var h = hsl.match(/\d+/g).map(Number)[0];
+        var h = hsl.match(/\d+/g).map(Number)[1];
+        var h = hsl.match(/\d+/g).map(Number)[2];
     }
-    return colors;
 }
 
 function generateGradient(colors) {
