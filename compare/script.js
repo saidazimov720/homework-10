@@ -14,5 +14,12 @@ function numberGenerator(params) {
 }
 
 function generateNum(count, max) {
-    
+    var numbers = [];
+    while (numbers.length < count) {
+        var number = Math.floor(Math.random()*max);
+        if (numbers.indexOf(number) === -1) {
+            numbers.push(number);
+        }
+    }
+    return number;
 }
