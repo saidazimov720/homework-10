@@ -6,5 +6,12 @@ function gradient(count) {
     var colors = [];
     var steps = 360 / count;
 
-    
+    for (let i = 0; i < count; i++) {
+        var hue = i * huesStep;
+        var color = `hsl(${hue}, 100%, 50%)`; 
+        colors.push(color);
+        
+    }
+    return colors;
 }
+
