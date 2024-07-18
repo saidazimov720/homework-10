@@ -31,5 +31,8 @@ function checkNum(userNum) {
     if (generatedNumber.indexOf(userNum) !== -1) {
         console.log("Phone number mathed: Go to next step");
         return true;
+    } else{
+        console.log("Phone number not match");
+        return false;
     }
 }
