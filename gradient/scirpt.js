@@ -45,6 +45,13 @@ var interpolateColor = function (c1, c2, weight) {
         Math.round(b1 + weight * (b2 - b1)));
 };
 
-var colors = Array.from({length: count}, function(_, i){
-    return "hsl(" + i * hueStep + ", 100%, 50%)"; 
-})
+var colors = Array.from({ length: count }, function (_, i) {
+    return "hsl(" + i * hueStep + ", 100%, 50%)";
+});
+
+for (var i = 0; i < steps; i++) {
+    var idx = Math.floor(i / (steps / (count - 1)));
+    var weight = (i % (steps / (count - 1))) / (steps / (count - 1));
+    gradient.push(interpolateColor(colors[idx], colors[idx + 1], weight));
+}
+
