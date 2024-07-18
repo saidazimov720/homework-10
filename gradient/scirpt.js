@@ -15,3 +15,12 @@ function gradient(count) {
     return colors;
 }
 
+function generateGradient(colors) {
+    var steps1 = 100;
+    var gradient = [];
+
+    for (var i = 0; i < steps1; i++) {
+        
+        
+    }
+}
