@@ -26,7 +26,10 @@ function gradient(count) {
         var min = Math.min(r, g, b);
         var l = (max + min) / 2;
         var d = max - min;
-        
+        var s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        var h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+        return "hsl(" + Math.round(h * 60) + ", " + Math.round(s * 100) + "%, " + Math.round(l * 100) + "%)";
+
     }
 }
 
