@@ -20,7 +20,10 @@ function generateGradient(colors) {
     var gradient = [];
 
     for (var i = 0; i < steps1; i++) {
-        
-        
+        var colorIndex = Math.floor(i / (steps1 / (colors.length - 1)));
+        var startColor = colors[colorIndex];
+        var endColor = colors[colorIndex + 1];
+
+        var weight = (i % (steps1/ (colors.length - 1))) / (steps1 / (colors.length - 1));
     }
 }
