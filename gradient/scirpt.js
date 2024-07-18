@@ -33,11 +33,15 @@ function gradient(count) {
     }
 }
 
-var interpolateColor = function(c1, c2, weight){
+var interpolateColor = function (c1, c2, weight) {
     var r1 = hsltoRgb(c1)[0];
     var g1 = hsltoRgb(c1)[1];
     var b1 = hsltoRgb(c1)[2];
     var r2 = hsltoRgb(c2)[0];
     var g2 = hsltoRgb(c2)[1];
     var b2 = hsltoRgb(c2)[2];
-}
+    return rgbToHsl(Math.round(r1 + weight * (r2 - r1)),
+        Math.round(g1 + weight * (g2 - g1)),
+        Math.round(b1 + weight * (b2 - b1)));
+};
+
