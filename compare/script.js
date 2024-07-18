@@ -48,4 +48,10 @@ function checkNum(userNum) {
         }
 
     }
+    if (match) {
+        console.log("You win!");
+    }else{
+        console.log("You loossee,  XaXaXaXaXaXaXaXa");
+    }
 }
+
