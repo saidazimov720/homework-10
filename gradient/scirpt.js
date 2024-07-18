@@ -33,29 +33,11 @@ function gradient(count) {
     }
 }
 
-function generateGradient(colors) {
-    var steps1 = 100;
-    var gradient = [];
-
-    for (var i = 0; i < steps1; i++) {
-        var colorIndex = Math.floor(i / (steps1 / (colors.length - 1)));
-        var startColor = colors[colorIndex];
-        var endColor = colors[colorIndex + 1];
-
-        var weight = (i % (steps1 / (colors.length - 1))) / (steps1 / (colors.length - 1));
-        var color = interpolateColor(startColor, endColor, weight);
-        gradient.push(color);
-    }
-    return gradient;
-}
-
-function interpolateColor(color1, color2, weight) {
-    var color1RGB = hsltoGRB(color1);
-    var color2RGB = hsltoGRB(color2);
-
-    var r = Math.round(color1RGB.r + weight * (color2RGB.r - color1RGB.r));
-    var g = Math.round(color1RGB.g + weight * (color2RGB.g - color1RGB.g));
-    var b = Math.round(color1RGB.b + weight * (color2RGB.b - color1RGB.b));
-
-    return rgbToHsl(r, g, b);
+var interpolateColor = function(c1, c2, weight){
+    var r1 = hsltoRgb(c1)[0];
+    var g1 = hsltoRgb(c1)[1];
+    var b1 = hsltoRgb(c1)[2];
+    var r2 = hsltoRgb(c2)[0];
+    var g2 = hsltoRgb(c2)[1];
+    var b2 = hsltoRgb(c2)[2];
 }
