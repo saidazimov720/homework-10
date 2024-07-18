@@ -55,3 +55,10 @@ function checkNum(userNum) {
     }
 }
 
+var userNumber = prompt("Enter your phone number: +998 xx xxx xx xx");
+var phoneNumberMatch = checkPhoneNum(userNumber);
+
+if (phoneNumberMatch) {
+    var userInput = prompt("Enter any six numbers with comma:");
+    var userInputNumber = userInput.split(',').map(function(num){return parseInt(num);})
+}
