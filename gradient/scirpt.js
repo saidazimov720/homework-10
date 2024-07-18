@@ -55,3 +55,4 @@ for (var i = 0; i < steps; i++) {
     gradient.push(interpolateColor(colors[idx], colors[idx + 1], weight));
 }
 
+var container = document.createElement('div');
