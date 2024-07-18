@@ -16,6 +16,17 @@ function gradient(count) {
             return l - a * Math.max(-1, Math.min(Math.cos((h / 30 + n) * Math.PI / 6), 1, 1));
         };
         return [f(0) * 255, f(8) * 255, f(4) * 255];
+    };
+
+    var rgbToHsl = function (r, g, b) {
+        r /= 255;
+        g /= 255;
+        b /= 255;
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var l = (max + min) / 2;
+        var d = max - min;
+        
     }
 }
 
