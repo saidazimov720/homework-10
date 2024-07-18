@@ -25,5 +25,7 @@ function generateGradient(colors) {
         var endColor = colors[colorIndex + 1];
 
         var weight = (i % (steps1/ (colors.length - 1))) / (steps1 / (colors.length - 1));
+        var color = interpolateColor(startColor, endColor, weight);
+        gradient.push(color);
     }
 }
