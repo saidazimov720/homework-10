@@ -60,5 +60,5 @@ var phoneNumberMatch = checkPhoneNum(userNumber);
 
 if (phoneNumberMatch) {
     var userInput = prompt("Enter any six numbers with comma:");
-    var userInputNumber = userInput.split(',').map(function(num){return parseInt(num);})
+    var userInputNumber = userInput.split(',').map(function(num){return parseInt(num);});
 }
