@@ -45,3 +45,6 @@ var interpolateColor = function (c1, c2, weight) {
         Math.round(b1 + weight * (b2 - b1)));
 };
 
+var colors = Array.from({length: count}, function(_, i){
+    return "hsl(" + i * hueStep + ", 100%, 50%)"; 
+})
