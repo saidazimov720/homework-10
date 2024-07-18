@@ -12,3 +12,7 @@ function numberGenerator(params) {
     }
     return phoneNumbers; 
 }
+
+function generateNum(count, max) {
+    
+}
