@@ -1,6 +1,6 @@
 function gradient(count) {
     if (count < 2 || count > 5) {
-        alert("The numbers of colors should be between 2 and 5");
+        alert("The number of colors should be between 2 and 5");
         return;
     }
 
@@ -10,14 +10,16 @@ function gradient(count) {
 
     var hslToRgb = function(hsl) {
         var hslValues = hsl.match(/\d+/g).map(Number);
-        var h = hslValues[0];
-        var s = hslValues[1];
-        var l = hslValues[2];
-        var a = s * Math.min(l / 100, 1 - l / 100);
+        var h = hslValues[0] / 360;
+        var s = hslValues[1] / 100;
+        var l = hslValues[2] / 100;
+        var a = s * Math.min(l, 1 - l);
         var f = function(n) {
-            return l - a * Math.max(-1, Math.min(Math.cos((h / 30 + n) * Math.PI / 6), 1, 1));
+            var k = (n + h * 12) % 12;
+            var color = l - a * Math.max(-1, Math.min(Math.cos(k * Math.PI / 6), 1));
+            return Math.round(color * 255);
         };
-        return [f(0) * 255, f(8) * 255, f(4) * 255];
+        return [f(0), f(8), f(4)];
     };
 
     var rgbToHsl = function(r, g, b) {
@@ -29,22 +31,27 @@ function gradient(count) {
         var l = (max + min) / 2;
         var d = max - min;
         var s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        var h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
-        return "hsl(" + Math.round(h * 60) + ", " + Math.round(s * 100) + "%, " + Math.round(l * 100) + "%)";
+        var h = max === r ? (g - b) / d + (g < b ? 6 : 0) :
+                max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+        h *= 60;
+        s *= 100;
+        l *= 100;
+        return [Math.round(h), Math.round(s), Math.round(l)];
     };
 
     var interpolateColor = function(c1, c2, weight) {
-        var r1 = hslToRgb(c1)[0];
-        var g1 = hslToRgb(c1)[1];
-        var b1 = hslToRgb(c1)[2];
-        var r2 = hslToRgb(c2)[0];
-        var g2 = hslToRgb(c2)[1];
-        var b2 = hslToRgb(c2)[2];
-        return rgbToHsl(
-            Math.round(r1 + weight * (r2 - r1)),
-            Math.round(g1 + weight * (g2 - g1)),
-            Math.round(b1 + weight * (b2 - b1))
-        );
+        var rgb1 = hslToRgb(c1);
+        var rgb2 = hslToRgb(c2);
+        var r1 = rgb1[0];
+        var g1 = rgb1[1];
+        var b1 = rgb1[2];
+        var r2 = rgb2[0];
+        var g2 = rgb2[1];
+        var b2 = rgb2[2];
+        var r = Math.round(r1 + weight * (r2 - r1));
+        var g = Math.round(g1 + weight * (g2 - g1));
+        var b = Math.round(b1 + weight * (b2 - b1));
+        return rgbToHsl(r, g, b);
     };
 
     var colors = Array.from({ length: count }, function(_, i) {
@@ -66,7 +73,7 @@ function gradient(count) {
         var block = document.createElement('div');
         block.style.height = '100%';
         block.style.flex = '1';
-        block.style.backgroundColor = color;
+        block.style.backgroundColor = 'rgb(' + color.join(',') + ')';
         container.appendChild(block);
     });
 
